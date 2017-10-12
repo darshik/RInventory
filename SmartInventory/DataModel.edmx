@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="InventoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="NoOf" Type="varchar" MaxLength="50" />
+          <Property Name="Equipment" Type="varchar(max)" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomNumber" Type="varchar(max)" />
+          <Property Name="Model" Type="varchar(max)" />
+          <Property Name="PurchaseDate" Type="varchar(max)" />
+          <Property Name="UNBCCode" Type="varchar(max)" />
+          <Property Name="SerialNo" Type="varchar(max)" />
+          <Property Name="PO" Type="varchar(max)" />
+          <Property Name="PurchasePrice" Type="varchar(max)" />
+          <Property Name="TotalPrice" Type="varchar(max)" />
+          <Property Name="Vendor" Type="varchar(max)" />
+          <Property Name="ModelBrandInfo" Type="varchar(max)" />
+          <Property Name="TypeOfAnalysis" Type="varchar(max)" />
+          <Property Name="PotentialUse" Type="varchar(max)" />
+          <Property Name="IsInGoodUse" Type="varchar(max)" />
+          <Property Name="CurrentUsersOfEquipment" Type="varchar(max)" />
+          <Property Name="Revenue" Type="varchar(max)" />
+          <Property Name="OtherUsefulInfo" Type="varchar(max)" />
+          <Property Name="Contact" Type="varchar(max)" />
+          <Property Name="BarCode" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="InventoryLogin">
+          <Key>
+            <PropertyRef Name="EmailID" />
+          </Key>
+          <Property Name="EmailID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Role" Type="varchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Department" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="InventoryModelStoreContainer">
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InventoryLogin" EntityType="Self.InventoryLogin" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InventoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="InventoryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Equipments" EntityType="InventoryModel.Equipment" />
+          <EntitySet Name="InventoryLogins" EntityType="InventoryModel.InventoryLogin" />
+        </EntityContainer>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="NoOf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Equipment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PurchaseDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UNBCCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SerialNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PurchasePrice" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TotalPrice" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Vendor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ModelBrandInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TypeOfAnalysis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PotentialUse" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsInGoodUse" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentUsersOfEquipment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Revenue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OtherUsefulInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BarCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="InventoryLogin">
+          <Key>
+            <PropertyRef Name="EmailID" />
+          </Key>
+          <Property Name="EmailID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InventoryModelStoreContainer" CdmEntityContainer="InventoryEntities">
+          <EntitySetMapping Name="Equipments">
+            <EntityTypeMapping TypeName="InventoryModel.Equipment">
+              <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="OtherUsefulInfo" ColumnName="OtherUsefulInfo" />
+                <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+                <ScalarProperty Name="CurrentUsersOfEquipment" ColumnName="CurrentUsersOfEquipment" />
+                <ScalarProperty Name="IsInGoodUse" ColumnName="IsInGoodUse" />
+                <ScalarProperty Name="PotentialUse" ColumnName="PotentialUse" />
+                <ScalarProperty Name="TypeOfAnalysis" ColumnName="TypeOfAnalysis" />
+                <ScalarProperty Name="ModelBrandInfo" ColumnName="ModelBrandInfo" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="PO" ColumnName="PO" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="UNBCCode" ColumnName="UNBCCode" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="RoomNumber" ColumnName="RoomNumber" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Equipment1" ColumnName="Equipment" />
+                <ScalarProperty Name="NoOf" ColumnName="NoOf" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InventoryLogins">
+            <EntityTypeMapping TypeName="InventoryModel.InventoryLogin">
+              <MappingFragment StoreEntitySet="InventoryLogin">
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

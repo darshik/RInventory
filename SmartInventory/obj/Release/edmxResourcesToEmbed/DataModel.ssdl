@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InventoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Equipment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="NoOf" Type="varchar" MaxLength="50" />
+    <Property Name="Equipment" Type="varchar(max)" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoomNumber" Type="varchar(max)" />
+    <Property Name="Model" Type="varchar(max)" />
+    <Property Name="PurchaseDate" Type="varchar(max)" />
+    <Property Name="UNBCCode" Type="varchar(max)" />
+    <Property Name="SerialNo" Type="varchar(max)" />
+    <Property Name="PO" Type="varchar(max)" />
+    <Property Name="PurchasePrice" Type="varchar(max)" />
+    <Property Name="TotalPrice" Type="varchar(max)" />
+    <Property Name="Vendor" Type="varchar(max)" />
+    <Property Name="ModelBrandInfo" Type="varchar(max)" />
+    <Property Name="TypeOfAnalysis" Type="varchar(max)" />
+    <Property Name="PotentialUse" Type="varchar(max)" />
+    <Property Name="IsInGoodUse" Type="varchar(max)" />
+    <Property Name="CurrentUsersOfEquipment" Type="varchar(max)" />
+    <Property Name="Revenue" Type="varchar(max)" />
+    <Property Name="OtherUsefulInfo" Type="varchar(max)" />
+    <Property Name="Contact" Type="varchar(max)" />
+    <Property Name="BarCode" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="InventoryLogin">
+    <Key>
+      <PropertyRef Name="EmailID" />
+    </Key>
+    <Property Name="EmailID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Role" Type="varchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar(max)" />
+    <Property Name="LastName" Type="nvarchar(max)" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Department" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="InventoryModelStoreContainer">
+    <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InventoryLogin" EntityType="Self.InventoryLogin" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

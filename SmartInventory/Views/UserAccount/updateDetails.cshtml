@@ -1,0 +1,97 @@
+﻿@model InventoryLogin
+
+<div class="col-md-6">
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading panel-heading-transparent">
+            <h2 class="panel-title">Edit User Details</h2>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("updateDetails","UserAccount",FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <fieldset>
+
+
+                    <div class="row" style="display: none">
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12">
+                                <label>@Html.LabelFor(model => model.EmailID)</label>
+                                <input type="text" readonly name="EmailID" class="form-control text-box single-line" value="@Model.EmailID" />
+                                @*@Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control" } })*@
+                                @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                    </div>
+
+                   
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12">
+                                <label>@Html.LabelFor(model => model.FirstName)</label>
+                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12">
+                                <label>@Html.LabelFor(model => model.LastName)</label>
+                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12">
+                                <label>@Html.LabelFor(model => model.PhoneNo)</label>
+                                @Html.EditorFor(model => model.PhoneNo, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PhoneNo, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12">
+                                <label>@Html.LabelFor(model => model.Department)</label>
+                                @Html.EditorFor(model => model.Department, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary">
+                            Update
+                        </button>
+                    </div>
+                </div>
+            }
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,138 @@
+﻿@model SmartInventory.InventoryLogin
+
+
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+               
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger margin-bottom-30">
+                        <!-- DANGER -->
+                        <strong>@TempData["Error"]</strong>
+                    </div>
+                }
+
+                <div class="panel panel-default">
+                    <div class="panel-heading panel-heading-transparent">
+                        <h2 class="panel-title">Create User</h2>
+                    </div>
+
+                    <div class="panel-body">
+
+                       @using (Html.BeginForm())
+                       {
+                        @Html.AntiForgeryToken()
+                        <fieldset>
+
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12 col-sm-12">
+                                        <label>@Html.LabelFor(model => model.EmailID)</label>
+                                        @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            @*<div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12 col-sm-12">
+                                        <label>@Html.LabelFor(model => model.Password)</label>
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+                            </div>*@
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12 col-sm-12">
+                                        <label>@Html.LabelFor(model => model.FirstName)</label>
+                                        @Html.EditorFor(model => model.FirstName, new {htmlAttributes = new {@class = "form-control"}})
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new {@class = "text-danger"})
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12 col-sm-12">
+                                        <label>@Html.LabelFor(model => model.LastName)</label>
+                                        @Html.EditorFor(model => model.LastName, new {htmlAttributes = new {@class = "form-control"}})
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new {@class = "text-danger"})
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12 col-sm-12">
+                                        <label>@Html.LabelFor(model => model.PhoneNo)</label>
+                                        @Html.EditorFor(model => model.PhoneNo, new {htmlAttributes = new {@class = "form-control"}})
+                                        @Html.ValidationMessageFor(model => model.PhoneNo, "", new {@class = "text-danger"})
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12 col-sm-12">
+                                        <label>@Html.LabelFor(model => model.Department)</label>
+                                        @Html.EditorFor(model => model.Department, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12 col-sm-12">
+                                        <label>Role</label>
+                                        <select name="Role">
+                                            <option>user</option>
+                                            <option>admin</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                        </fieldset>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary">
+                                    Create User
+                                </button>
+                            </div>
+                        </div>
+                       }
+
+                          
+
+                     
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

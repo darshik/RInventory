@@ -1,0 +1,141 @@
+﻿@model IEnumerable<SmartInventory.Equipment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Equipment1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UNBCCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SerialNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchasePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vendor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelBrandInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeOfAnalysis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PotentialUse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsInGoodUse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentUsersOfEquipment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Revenue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OtherUsefulInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contact)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Equipment1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchaseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UNBCCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SerialNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchasePrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vendor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelBrandInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeOfAnalysis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PotentialUse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsInGoodUse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentUsersOfEquipment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Revenue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherUsefulInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contact)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

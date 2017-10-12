@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InventoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="InventoryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Equipments" EntityType="InventoryModel.Equipment" />
+    <EntitySet Name="InventoryLogins" EntityType="InventoryModel.InventoryLogin" />
+  </EntityContainer>
+  <EntityType Name="Equipment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="NoOf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Equipment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoomNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PurchaseDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UNBCCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SerialNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PurchasePrice" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TotalPrice" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Vendor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ModelBrandInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TypeOfAnalysis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PotentialUse" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsInGoodUse" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CurrentUsersOfEquipment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Revenue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="OtherUsefulInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="BarCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="InventoryLogin">
+    <Key>
+      <PropertyRef Name="EmailID" />
+    </Key>
+    <Property Name="EmailID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

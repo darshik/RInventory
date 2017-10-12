@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InventoryModelStoreContainer" CdmEntityContainer="InventoryEntities">
+    <EntitySetMapping Name="Equipments">
+      <EntityTypeMapping TypeName="InventoryModel.Equipment">
+        <MappingFragment StoreEntitySet="Equipment">
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="OtherUsefulInfo" ColumnName="OtherUsefulInfo" />
+          <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+          <ScalarProperty Name="CurrentUsersOfEquipment" ColumnName="CurrentUsersOfEquipment" />
+          <ScalarProperty Name="IsInGoodUse" ColumnName="IsInGoodUse" />
+          <ScalarProperty Name="PotentialUse" ColumnName="PotentialUse" />
+          <ScalarProperty Name="TypeOfAnalysis" ColumnName="TypeOfAnalysis" />
+          <ScalarProperty Name="ModelBrandInfo" ColumnName="ModelBrandInfo" />
+          <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+          <ScalarProperty Name="PO" ColumnName="PO" />
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="UNBCCode" ColumnName="UNBCCode" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="RoomNumber" ColumnName="RoomNumber" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Equipment1" ColumnName="Equipment" />
+          <ScalarProperty Name="NoOf" ColumnName="NoOf" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InventoryLogins">
+      <EntityTypeMapping TypeName="InventoryModel.InventoryLogin">
+        <MappingFragment StoreEntitySet="InventoryLogin">
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,31 @@
+﻿@model InventoryLogin
+           
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading panel-heading-transparent">
+                        <h2 class="panel-title">Details for </h2>
+                    </div>
+
+                    <div style="padding:50px" class="panel-body">
+                        @if (TempData["Error"] != null)
+                        {
+                            <div class="alert alert-danger margin-bottom-30">
+                                <!-- DANGER -->
+                                <strong>@TempData["Error"]</strong>
+                            </div>
+                        }
+                        
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,77 @@
+﻿<section>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6 col-md-offset-3">
+                @if (TempData["Error"] != null)
+                {
+                    <!-- ALERT -->
+    <div class="alert alert-danger margin-bottom-30">
+        <!-- DANGER -->
+        <strong>@TempData["Error"]</strong>
+    </div>
+                   
+
+                }
+              
+                <div class="box-static box-border-top padding-30">
+                    <div class="box-title margin-bottom-30">
+                        <h2 class="size-20">Please Login using your Email ID</h2>
+                    </div>
+                    @using (Html.BeginForm("Login", "UserAccount", new {ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {@class = "nomargin", role = "form"}))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="clearfix">
+
+                            <!-- Email -->
+                            <div class="form-group">
+                                <input type="text" name="emailId" class="form-control" placeholder="Email" required="">
+                            </div>
+
+                            <!-- Password -->
+                            @*<div class="form-group">
+                                <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                            </div>*@
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <!-- Inform Tip -->
+                                @*<div class="form-tip pt-20">
+                                        <a class="no-text-decoration size-13 margin-top-10 block" href="#">Forgot Password?</a>
+                                    </div>*@
+                                @*<div class="form-tip pt-20">
+                                    @Html.ActionLink("Register as a new user", "Register")
+                                </div>*@
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+
+                                <button class="btn btn-primary">Submit</button>
+
+                            </div>
+
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<style>
+    .error-message ul {
+        list-style: none;
+        background-color: #f2dede;
+        color: #b94a48;
+        padding: 20px;
+    }
+</style>

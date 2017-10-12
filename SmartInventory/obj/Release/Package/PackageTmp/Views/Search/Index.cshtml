@@ -1,0 +1,328 @@
+﻿@model List<Equipment>
+
+@{
+    string type = ViewBag.type;
+    List<String> selected = new List<String>();
+    if (type != null && !type.Equals(String.Empty))
+    {
+        selected = type.Split(',').ToList();
+    }
+    
+    
+}
+
+<section class="page-header page-header-xs light" style="background-color: rgba(0, 0, 0, 0.05);border-bottom:1px solid  #ccc">
+    <div class="container">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="search-box" style="display: block;">
+                        <form action="/Search/Index" method="get" style="margin-bottom: 0px">
+                            <div class="input-group">
+                                <input type="text" name="s" value="@Request["s"]" placeholder="Search" class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit">Search</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section style="padding-top:40px">
+    <div class="container">
+        <div class="row">
+        <div class="col-md-2">
+            <div class="side-nav margin-bottom-60">
+
+                <div class="side-nav-head">
+                    <button class="fa fa-bars"></button>
+                    <h2 class="owl-featured">Refine your search</h2>
+                </div>
+                <ul class="list-group list-group-bordered list-group-noicon uppercase">
+                    <li class="list-group-item"><a style="@if (selected.Contains("barcode"))
+                                                          {<text>background-color: #045743;color:#fff</text>}" href="/Search/Index?s=@ViewBag.search&t=@ViewBag.type&selected=barcode">BARCODE</a></li>
+                    <li class="list-group-item"><a style="@if (selected.Contains("equipments"))
+                                                          {<text>background-color: #045743;color:#fff</text>}" href="/Search/Index?s=@ViewBag.search&t=@ViewBag.type&selected=equipments">EQUIPMENTS</a></li>
+                    <li class="list-group-item"><a style="@if (selected.Contains("contact"))
+                                                          {<text>background-color: #045743;color:#fff</text>}" href="/Search/Index?s=@ViewBag.search&t=@ViewBag.type&selected=contact">CONTACT</a></li>
+                    <li class="list-group-item"><a style="@if (selected.Contains("model"))
+                                                          {<text>background-color: #045743;color:#fff</text>}" href="/Search/Index?s=@ViewBag.search&t=@ViewBag.type&selected=model">MODEL</a></li>
+                    @*<li class="list-group-item"><a href="/Search/Index?s=@ViewBag.search&t=all">VIEW ALL</a></li>*@
+                </ul>
+
+            </div>
+        </div>
+
+            @if (Model.Any())
+            {
+
+                <div class="col-md-10">
+                    @if (Session["EmailId"] != null && Session["Role"] != null && Session["Role"].Equals("admin"))
+                    {<div style="float: right; padding-bottom: 20px">
+                        <button class="btn btn-3d btn-amber editBtn"><i class="et-edit"></i>Edit</button>
+                        <a href="#" class="btn btn-3d btn-red deleteBtn"><i class="et-caution"></i>Delete</a>
+                    </div> }
+                    
+                    <table class="table table-striped table-bordered table-hover margin-top30 table-vertical-middle">
+                        <thead style="background-color: #045743; color: #fff">
+                        <tr>
+                            <th></th>
+                            <th>BarCode</th>
+                            <th>No Of</th>
+                            <th>Equipment</th>
+                            <th>Room No</th>
+                            <th>Contact</th>
+                            <th>Model</th>
+
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var equipment in Model)
+                        {
+                            <tr>
+                                <td style="text-align: center"><input type="radio" name="radioequipment" value="@equipment.ID" required class="radio"/> </td>
+                                <td>@equipment.BarCode</td>
+                                <td>@equipment.NoOf</td>
+                                <td>@equipment.Equipment1</td>
+                                <td>@equipment.RoomNumber</td>
+                                <td>@equipment.Contact</td>
+                                <td>
+                                    @equipment.Model
+                                </td>
+
+                                <td>
+                                    <div style="display: inline-flex">
+                                        <a href="#" data-toggle="modal" data-target="#@equipment.ID" class="btn btn-3d btn-dirtygreen"><i class="et-tools-2"></i>Details</a>
+                                        @if (Session["EmailId"] != null && Session["Role"] != null && Session["Role"].Equals("admin"))
+                                        {
+                                            @*<a href="/Equipments/Edit?id=@equipment.ID" class="btn btn-3d btn-amber"><i class="et-edit"></i>Edit</a>
+                                            <a href="/Equipments/DeleteConfirmed?id=@equipment.ID" class="btn btn-3d btn-red" onclick="return ConfirmDelete();"><i class="et-caution"></i>Delete</a>*@
+
+                                        }
+
+                                    </div>
+                                    <div id="@equipment.ID" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="@equipment.ID" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+
+                                                <!-- header modal -->
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="@equipment.ID">@equipment.Equipment1</h4>
+                                                </div>
+
+                                                <!-- body modal -->
+                                                <div class="modal-body">
+
+                                                    <div class="table-responsive" style="padding: 15px">
+                                                        <table class="table table-bordered table-striped">
+
+                                                            <tbody>
+                                                            <tr>
+                                                                <th scope="row">BarCode</th>
+                                                                <td>@equipment.BarCode</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">No Of</th>
+                                                                <td>@equipment.NoOf</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Equipment</th>
+                                                                <td>@equipment.Equipment1</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Room No</th>
+                                                                <td>@equipment.RoomNumber</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Model</th>
+                                                                <td>@equipment.Model</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Purchase Date</th>
+                                                                <td>@equipment.PurchaseDate</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">UNBC Barcode</th>
+                                                                <td>@equipment.UNBCCode</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Serial No</th>
+                                                                <td>@equipment.SerialNo</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">PO#</th>
+                                                                <td>@equipment.PO</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Purchase Price</th>
+                                                                <td>@equipment.PurchasePrice</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Total Price</th>
+                                                                <td>@equipment.TotalPrice</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Vendor</th>
+                                                                <td>@equipment.Vendor</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Model and Brand of instrument:</th>
+                                                                <td>@equipment.ModelBrandInfo</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">
+                                                                    Type of analysis done on instrument:
+                                                                </th>
+                                                                <td>@equipment.TypeOfAnalysis</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">
+                                                                    Other potential uses of instrument:
+                                                                </th>
+                                                                <td>@equipment.PotentialUse</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">
+                                                                    Is instrument in good repair. If not, what needs to be done to get it going?
+                                                                </th>
+                                                                <td>@equipment.IsInGoodUse</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">
+                                                                    Current users of equipment (name of faculty, industries, courses):
+                                                                </th>
+                                                                <td>@equipment.CurrentUsersOfEquipment</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">
+                                                                    Revenue (from whom and how much annually):
+                                                                </th>
+                                                                <td>@equipment.Revenue</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">
+                                                                    Other useful information:
+                                                                </th>
+                                                                <td>@equipment.OtherUsefulInfo</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    @*<div class="panel panel-info">
+                                                                <div class="panel-heading">
+                                                                    <h2 class="panel-title text-center">
+                                                                        Detailed Information
+                                                                    </h2>
+                                                                </div>
+                                                                <div class="panel-body">
+
+                                                                </div>
+                                                            </div>*@
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+
+
+
+                        }
+
+
+
+                        </tbody>
+                    </table>
+@if (Session["EmailId"] != null && Session["Role"] != null && Session["Role"].Equals("admin"))
+{ <div style="float: left; padding-bottom: 20px">
+        <button class="btn btn-3d btn-amber editBtn"><i class="et-edit"></i>Edit</button>
+        <button class="btn btn-3d btn-red deleteBtn"><i class="et-caution"></i>Delete</button>
+    </div> }
+                   
+                </div>
+            }
+            else
+            {
+                
+                <div class="col-md-10">
+                    <div class="alert alert-warning margin-bottom-30">
+                        <!-- WARNING -->
+                        Unable to find item in database
+                    </div>
+                </div>
+                  
+                    }
+
+                </div>
+    </div>
+
+</section>
+
+<style>
+    thead > tr > th {
+        min-width: 80px;
+    }
+</style>
+<script>
+    function ConfirmDelete() {
+        var x = confirm("Are you sure you want to delete?");
+        if (x) {
+            return true;
+        } else
+            return false;
+    }
+
+    function redirectToAction() {
+        var radioValue = $('input[name=radioequipment]:checked').val();
+
+        
+    }
+
+    $('.editBtn').click(function (e) {
+        var returnUrl = window.location.href;
+
+        var radioValue = $('input[name=radioequipment]:checked').val();
+        if (isNaN(radioValue)) {
+            alert("Please select an item to be edited");
+            return false;
+        } else {
+            var redirectUrl = "/Equipments/Edit?id=" + radioValue+"&returnUrl="+returnUrl;
+          
+            window.location.href = redirectUrl;
+            return true;
+        }
+       
+    });
+
+    $('.deleteBtn').click(function (e) {
+        
+        if (ConfirmDelete()) {
+            var radioValue = $('input[name=radioequipment]:checked').val();
+            if (isNaN(radioValue)) {
+                alert("Please select an item to be deleted");
+                return false;
+            } else {
+                var returnUrl = window.location.href;
+
+                var redirectUrl = "/Equipments/DeleteConfirmed?id=" + radioValue+"&returnUrl="+returnUrl;
+                window.location.href = redirectUrl;
+                return true;
+            }
+        } else return false;
+
+
+    });
+
+
+</script>

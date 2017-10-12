@@ -1,0 +1,94 @@
+﻿<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success margin-bottom-30">
+                        <!-- SUCCESS -->
+                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <strong>@TempData["Success"].ToString()</strong>
+                    </div>
+                }
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger margin-bottom-30">
+                        <!-- DANGER -->
+                        <strong>@TempData["Error"]</strong>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-8 col-md-offset-2">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading panel-heading-transparent">
+                        <h2 class="panel-title">Contact</h2>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <form class="validate" action="/Contact/SendMail" method="post">
+                            <fieldset>
+
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-12 col-sm-12">
+                                            <label>Email ID</label>
+                                            <input type="text" name="emailId" value="@Session["EmailId"]" readonly class="form-control ">
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-12 col-sm-12">
+                                            <label>Subject</label>
+                                            <input type="text" name="subject" required class="form-control required">
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-12 col-sm-12">
+                                            <label>Message</label>
+                                            <textarea name="message" required class="form-control"></textarea>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+                            </fieldset>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary">
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</section>
